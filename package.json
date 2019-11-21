@@ -1,0 +1,41 @@
+{
+  "name": "my-bucketlist-",
+  "version": "1.0.0",
+  "description": "Restful API for a bucket list service",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node -- index.js",
+    "test": "nyc --reporter=html --reporter=text mocha server/tests/test.js --exit --require babel-core/register",
+    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coveralls": "nyc --reporter=lcov --reporter=text-lcov npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joyce-O/My-bucketList-.git"
+  },
+  "author": "Joyce",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joyce-O/My-bucketList-/issues"
+  },
+  "homepage": "https://github.com/Joyce-O/My-bucketList-#readme",
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^3.0.7",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.8",
+    "dotenv": "^8.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.18.2",
+    "express": "^4.17.1",
+    "joi": "^14.3.1",
+    "mocha": "^6.2.2",
+    "nodemon": "^2.0.0",
+    "nyc": "^14.1.1"
+  }
+}
