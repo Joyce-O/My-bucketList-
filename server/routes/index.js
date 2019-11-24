@@ -1,8 +1,17 @@
 import express from 'express';
+import swaggerDocument from '../../documentation.json';
+import swaggerUi from 'swagger-ui-express';
 
-const homeRoute = express.Router();;
+import user from './user';
+import bucket from './bucket'
 
-homeRoute.get('/api/v1', (request, response) => {
+const router = express.Router();;
+
+router.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+router.use('/', user);
+router.use('/', bucket);
+
+router.get('/', (request, response) => {
   response.status(200)
     .json({
       success: true,
@@ -10,7 +19,7 @@ homeRoute.get('/api/v1', (request, response) => {
     });
 });
 
-homeRoute.all('*', (request, response) => {
+router.all('*', (request, response) => {
   response.status(404)
     .json({
       success: false,
@@ -18,4 +27,4 @@ homeRoute.all('*', (request, response) => {
     });
 });
 
-export default homeRoute;
+export default router;
