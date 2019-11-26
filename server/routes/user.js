@@ -6,7 +6,7 @@ import User from '../auth/User';
 const user = express.Router();
 
 
-user.post('/auth/signup', UserValidation.handleSignup, User.registerUser);
+user.post('/auth/signup', User.registerUser);
 user.post('/auth/login', UserValidation.handleLogin, User.loginUser);
 
 

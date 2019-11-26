@@ -1,31 +1,8 @@
-// 'use strict';
-// module.exports = (sequelize, DataTypes) => {
-//   const user = sequelize.define('user', {
-//     id: DataTypes.STRING,
-//     firstname: DataTypes.STRING,
-//     lastname: DataTypes.STRING,
-//     email: DataTypes.STRING,
-//     isAdmin: DataTypes.BOOLEAN,
-//     password: DataTypes.STRING
-//   }, {});
-//   user.associate = function(models) {
-//     // associations can be defined here
-//   };
-//   return user;
-// };
-
-// 'use strict';
+"use strict";
 module.exports = (sequelize, DataTypes) => {
   const user = sequelize.define(
     "user",
     {
-      id: {
-        type: DataTypes.UUID,
-        defaultValue: DataTypes.UUIDV4,
-        unique: true,
-        primaryKey: true,
-        allowNull: false
-      },
       firstname: {
         type: DataTypes.STRING(225),
         allowNull: false
@@ -51,23 +28,19 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false
       },
       password: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING,
         allowNull: false
-      },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
       }
     },
-    {}
+    {
+      timestamps: true, 
+      // disable the modification of table names; By default, sequelize will automatically
+      // transform all passed model names (first parameter of define) into plural.
+      freezeTableName: true
+    }
   );
   user.associate = function(models) {
     user.hasMany(models.bucket, { foreignKey: "created_by" });
-    // associations can be defined here
   };
   return user;
 };

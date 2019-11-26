@@ -11,7 +11,6 @@ export const newUserSchema = Joi.object().keys({
   email: Joi.string().email({ minDomainAtoms: 2 }).lowercase().max(50)
     .required()
     .label('A valid email is required'),
-  phone: Joi.number().integer().required().label('A valid phone number is required'),
   password: Joi.string().alphanum().min(3).max(1000)
     .required()
     .label('A valid password is required'),

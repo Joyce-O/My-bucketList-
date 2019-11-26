@@ -24,10 +24,7 @@
   },
   "homepage": "https://github.com/Joyce-O/My-bucketList-#readme",
   "dependencies": {
-    "@babel/core": "^7.7.4",
-    "@babel/register": "^7.7.4",
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/node": "^7.7.4",
     "bcrypt": "^3.0.7",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
@@ -52,5 +49,12 @@
     "sequelize-cli": "^5.5.1",
     "short-id": "0.1.0-1",
     "swagger-ui-express": "^4.1.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/register": "^7.7.4",
+    "babel-core": "^7.0.0-bridge.0"
   }
 }

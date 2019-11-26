@@ -7,6 +7,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.js')[env];
 const db = {};
+import User from './user';
 
 let sequelize;
 if (config.use_env_variable) {
@@ -33,5 +34,7 @@ Object.keys(db).forEach(modelName => {
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+
+db.models = User; // Export user for model relationship
 
 module.exports = db;

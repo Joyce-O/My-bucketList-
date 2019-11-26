@@ -15,7 +15,7 @@ router.get('/', (request, response) => {
   response.status(200)
     .json({
       success: true,
-      message: 'Hi welcome, drop you list here!'
+      message: 'Hi welcome to bucketlist, get started already!'
     });
 });
 

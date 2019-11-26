@@ -13,7 +13,7 @@ describe('Tests for Homepage and invalid url endpoints', () => {
         .get('/api/v1')
         .end((error, response) => {
           expect(response).to.have.status(200);
-          expect(response.body.message).to.equal('Hi welcome, drop you list here!');
+          expect(response.body.message).to.equal('Hi welcome to bucketlist, get started already!');
           done();
         });
     });

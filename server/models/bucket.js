@@ -1,60 +1,25 @@
-// 'use strict';
-// module.exports = (sequelize, DataTypes) => {
-//   const bucket = sequelize.define('bucket', {
-//     name: DataTypes.STRING,
-//     items: DataTypes.JSONB,
-//     created_by: DataTypes.INTEGER
-//   }, {});
-//   bucket.associate = function(models) {
-//     // associations can be defined here
-//   };
-//   return bucket;
-// };
-
+"use strict";
 module.exports = (sequelize, DataTypes) => {
-  const bucket = sequelize.define(
+  const buckets = sequelize.define(
     "bucket",
     {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: DataTypes.INTEGER
-      },
       name: {
         type: DataTypes.STRING,
         allowNull: false
       },
-      items: {
-        type: DataTypes.JSONB,
-        allowNull: false
-        // autoIncrement: true
-      },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE
-      }
-      // created_by: {
-      //   type: Sequelize.INTEGER,
-      //   onDelete: 'CASCADE',
-      //   references: {
-      //     model: 'user',
-      //     key: 'id',
-      //   },
-      // },
     },
-    {}
+    {
+      timestamps: true, 
+      // disable the modification of table names; By default, sequelize will automatically
+      // transform all passed model names (first parameter of define) into plural.
+      freezeTableName: true
+    }
   );
-  bucket.associate = function(models) {
-    bucket.belongsTo(models.user, {
-      foreignKey: "created_by",
-      onDelete: "CASCADE"
+  buckets.associate = function(models) {
+    buckets.belongsTo(models.user, {
+      foreignKey: "created_by"
     });
-    // associations can be defined here
+    buckets.hasMany(models.items, { foreignKey: "parent_id", as: "bucketItems" });
   };
-  return bucket;
+  return buckets;
 };
