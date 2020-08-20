@@ -25,7 +25,7 @@
   "homepage": "https://github.com/Joyce-O/My-bucketList-#readme",
   "dependencies": {
     "@babel/node": "^7.7.4",
-    "bcrypt": "^3.0.7",
+    "bcrypt": "^5.0.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "coveralls": "^3.0.8",
